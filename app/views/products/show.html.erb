@@ -24,6 +24,6 @@
   <% puts @product.category.inspect%>
   <%= @product.category.name %>
 </p>
-
+<%= link_to 'Add to Cart' ,new_cart_item_path %>
 <!--<%= link_to 'Edit', edit_product_path(@product) %> |-->
 <%= link_to 'Back', products_path %>

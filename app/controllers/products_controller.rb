@@ -5,22 +5,51 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    @categories = Category.all
+    puts @categories
+    puts params[:search]
+      if params[:category_id].blank?
+        if !params[:search].blank?
+          puts"------------------"
+          @products = Product.where(name: params[:search])
+        else
+          puts "------------home page"
+          @products = Product.all
+          @current_category = 'All'
+        end
+      else
+        @products = Product.where(category_id: params[:category_id])
+        @current_category = Category.find(params[:category_id]).name
+      end
+
   end
 
   # GET /products/1
   # GET /products/1.json
   def show
     @product = Product.find(params[:id])
+    @products = Product.where(category_id: params[:category_id])
+  end
+
+  def search
+    if params[:search].blank?
+      redirect_to(root_path, alert: "Empty field!") and return
+    else
+      @parameter = params[:search].toLowerCase()
+      @results = Product.all.where("lower(name) LIKE :search", search: "%#{@parameter}%")
+    end
   end
 
   # GET /products/new
   def new
     @product = Product.new
+    @categories = Category.all
+
   end
 
   # GET /products/1/edit
   def edit
+
   end
 
   # POST /products

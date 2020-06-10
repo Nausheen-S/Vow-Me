@@ -21,7 +21,8 @@
 
 <p>
   <strong>Category:</strong>
-  <%= @product.category %>
+  <% puts @product.category.inspect%>
+  <%= @product.category.name %>
 </p>
 
 <!--<%= link_to 'Edit', edit_product_path(@product) %> |-->

@@ -1,15 +1,20 @@
 <p id="notice"><%= notice %></p>
-
+<%= render 'form', product: @product %>
 <h1>Products</h1>
+
+<% @categories.each do |category| %>
+	<p><%= link_to category.name , category_path(category) %></p>
+<% end %>
 
 
     <% @products.each do |product| %>
 
         <td><%= link_to image_tag( product.image_url) , product_path(product) %></td>
+        <td> <%= product.category.name %></td>
 
-        <td><%= link_to 'Show', product %></td>
 
     <% end %>
+
 
 
 <br>

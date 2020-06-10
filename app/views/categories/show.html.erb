@@ -4,6 +4,15 @@
   <strong>Name:</strong>
   <%= @category.name %>
 </p>
+<p>
+  <% @category.product.each do |product| %>
 
-<%= link_to 'Edit', edit_category_path(@category) %> |
+        <td><%= image_tag product.image_url%></td>
+
+    <% end %>
+
+</p>
+
+
+
 <%= link_to 'Back', categories_path %>

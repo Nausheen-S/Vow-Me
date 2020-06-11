@@ -15,18 +15,19 @@
   <%= @product.price %>
 </p>
 
-<p>
-<%= link_to image_tag(@product.image_url)%>
-</p>
+
 
 <p>
   <strong>Category:</strong>
   <% puts @product.category.inspect%>
   <%= @product.category.name %>
 </p>
+<p>
+<%= link_to image_tag(@product.image_url)%>
+</p>
 
 <!--<%= link_to 'Edit', edit_product_path(@product) %> |-->
-<%= link_to 'Back', root_path %>
+
 <%= form_with scope: :cart_item, url: cart_items_path, local: true do |form| %>
 
 
@@ -38,11 +39,14 @@
   </div>
 
   <div class="field" >
-    <%= form.label :product_id %>
+
     <%= form.hidden_field :product_id, value:@product.id %>
   </div>
 
   <div class="actions">
+
     <%= form.submit %>
   </div>
 <% end %>
+
+<%= link_to 'Back', root_path %>

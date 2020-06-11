@@ -16,7 +16,7 @@
     <% @products.each do |product| %>
 
         <td><%= link_to image_tag( product.image_url) , product_path(product) %></td>
-        <td> <%= product.category.name %></td>
+
 
 
     <% end %>

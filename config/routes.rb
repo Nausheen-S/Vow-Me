@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :cart_items
   devise_for :customers
   root 'products#index'
   resources :categories

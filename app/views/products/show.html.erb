@@ -27,3 +27,22 @@
 
 <!--<%= link_to 'Edit', edit_product_path(@product) %> |-->
 <%= link_to 'Back', products_path %>
+<%= form_with scope: :cart_item, url: cart_items_path, local: true do |form| %>
+
+
+
+
+  <div class="field">
+    <%= form.label :quantity %>
+    <%= form.number_field :quantity %>
+  </div>
+
+  <div class="field" >
+    <%= form.label :product_id %>
+    <%= form.hidden_field :product_id, value:@product.id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

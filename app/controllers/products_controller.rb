@@ -6,6 +6,8 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @categories = Category.all
+    @cart_items = CartItem.all
+
     puts @categories
     puts params[:search]
       if params[:category_id].blank?

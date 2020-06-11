@@ -1,6 +1,12 @@
 <p id="notice"><%= notice %></p>
 <%= render 'form', product: @product %>
 <h1>Products</h1>
+<% if not customer_signed_in? %>
+	<%= link_to 'log in', new_customer_session_url %>
+<% else %>
+	<%= link_to 'log out', destroy_customer_session_url, method: :delete %>
+<% end %>
+<p><%= link_to 'View Cart' , cart_items_path %></p>
 
 <% @categories.each do |category| %>
 	<p><%= link_to category.name , category_path(category) %></p>
@@ -14,6 +20,7 @@
 
 
     <% end %>
+
 
 
 

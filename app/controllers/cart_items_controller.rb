@@ -4,15 +4,15 @@ class CartItemsController < ApplicationController
   # GET /cart_items
   # GET /cart_items.json
   def index
-
+     total_price = 0
      @cart_items = CartItem.all
      @customer = current_customer
     #@cart_items = current_customer.cart_items
-    #@cart_items.each do |cart_item|
-      #@total_price += cart_item.product.price * cart_item.quantity
-    #end
+    @cart_items.each do |cart_item|
+      total_price += cart_item.product.price
+    end
     puts"-----"
-    #puts @total_price
+    puts total_price
   end
 
   # GET /cart_items/1

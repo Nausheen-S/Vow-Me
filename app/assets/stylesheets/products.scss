@@ -1,3 +1,19 @@
 // Place all the styles related to the Products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.productbody{
+	background-color: #F9F8EA;
+}
+.producttitle{
+	font-family: 'MuseoModerno', cursive;
+	color:#CCD238;
+	text-align:center;
+	font-size: 60px;
+}
+.productsearchbutton{
+	background-color:#CCD238;
+	border-style: none;
+	color: white;
+	padding: 7px;
+	border-radius: 5px;
+}

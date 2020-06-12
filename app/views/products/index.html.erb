@@ -1,6 +1,8 @@
+<body class = "productbody">
 <p id="notice"><%= notice %></p>
+<h1 class = "producttitle">Vow Me!</h1>
 <%= render 'form', product: @product %>
-<h1>Products</h1>
+
 <% if not customer_signed_in? %>
 	<%= link_to 'log in', new_customer_session_url %>
 <% else %>
@@ -25,3 +27,4 @@
 
 
 <br>
+</body>

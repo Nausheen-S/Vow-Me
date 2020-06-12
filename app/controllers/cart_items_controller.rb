@@ -5,9 +5,10 @@ class CartItemsController < ApplicationController
   # GET /cart_items.json
   def index
      total_price = 0
-     @cart_items = CartItem.all
-     @customer = current_customer
-    #@cart_items = current_customer.cart_items
+     #@cart_items = CartItem.all
+     @customer = Customer.find(current_customer.id)
+
+    @cart_items = @customer.cart_items
     @cart_items.each do |cart_item|
       total_price += cart_item.product.price
     end
@@ -37,14 +38,15 @@ class CartItemsController < ApplicationController
   # POST /cart_items.json
   def create
     # if product already exists in present cart of the current user assign it to result
-     #result = CartItem.where("quantity>=1 AND customer_id=? AND product_id=?" ,current_customer.id, params[:cart_item][:product_id])
-    #if result.length > 0
-      #result[0].quantity+=1
+     result = CartItem.where("quantity>=1 AND customer_id=? AND product_id=?" ,current_customer.id, params[:cart_item][:product_id])
+    if result.length > 0
+      @cart_item = result[0]
+      @cart_item.quantity+= cart_item_params[:quantity].to_i
       #@cart_item = result[0].update(cart_item_params)
       #@cart_item = CartItem.find(params[:cart_item][:id])
-      if CartItem.where("quantity>=1 AND customer_id=? AND product_id=?" ,current_customer.id, params[:cart_item][:product_id])
-    cart_item = CartItem.find_by( [ "customer_id = #{current_customer.id} AND product_id = #{params[:cart_item][:product_id]}" ])
-        CartItem.update(cart_item.id, :quantity => cart_item.quantity + 1)
+    #if CartItem.where("quantity>=1 AND customer_id=? AND product_id=?" ,current_customer.id, params[:cart_item][:product_id])
+      #cart_item = CartItem.find_by( [ "customer_id = #{current_customer.id} AND product_id = #{params[:cart_item][:product_id]}" ])
+        #cart_item.update(cart_item.id, :quantity => cart_item.quantity + 1)
 
 
    else
@@ -57,6 +59,7 @@ class CartItemsController < ApplicationController
 
     end
     respond_to do |format|
+
       if @cart_item.save
         format.html { redirect_to @cart_item, notice: 'Cart item was successfully created.' }
         format.json { render :root, status: :created, location: @cart_item }

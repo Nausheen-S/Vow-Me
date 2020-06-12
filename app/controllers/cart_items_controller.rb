@@ -37,30 +37,25 @@ class CartItemsController < ApplicationController
   # POST /cart_items.json
   def create
     # if product already exists in present cart of the current user assign it to result
-     result = CartItem.where("quantity>=1 AND customer_id=? AND product_id=?" ,current_customer.id, params[:cart_item][:product_id])
-     puts"*****"
-     puts params[:cart_item][:product_id]
-    if result.length > 0
-      puts "=====if cond works====="
-
-      puts result[0].quantity.inspect
-      result[0].quantity+=1
+     #result = CartItem.where("quantity>=1 AND customer_id=? AND product_id=?" ,current_customer.id, params[:cart_item][:product_id])
+    #if result.length > 0
+      #result[0].quantity+=1
       #@cart_item = result[0].update(cart_item_params)
-      @cart_item = CartItem.find(params[:cart_item][:id])
-      puts"=-=-=-"
-      puts"cart_item"
-      puts @cart_item
+      #@cart_item = CartItem.find(params[:cart_item][:id])
+      if CartItem.where("quantity>=1 AND customer_id=? AND product_id=?" ,current_customer.id, params[:cart_item][:product_id])
+    cart_item = CartItem.find_by( [ "customer_id = #{current_customer.id} AND product_id = #{params[:cart_item][:product_id]}" ])
+        CartItem.update(cart_item.id, :quantity => cart_item.quantity + 1)
 
 
    else
+      #@cart_item = CartItem.create!( :product => @product, :quantity => 1)
+
       @cart_item = CartItem.new(cart_item_params)
       @cart_item.customer = current_customer
       puts"----"
       puts current_customer.inspect
 
     end
-
-
     respond_to do |format|
       if @cart_item.save
         format.html { redirect_to @cart_item, notice: 'Cart item was successfully created.' }

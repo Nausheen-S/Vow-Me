@@ -2,7 +2,6 @@
 <p id="notice"><%= notice %></p>
 <h1 class = "producttitle">Vow Me!</h1>
 <%= render 'form', product: @product %>
-
 <% if not customer_signed_in? %>
 	<%= link_to 'log in', new_customer_session_url %>
 <% else %>

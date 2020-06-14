@@ -1,18 +1,14 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @category.name %>
-</p>
-<p>
-  <% @category.product.each do |product| %>
-
+<body class="categoryshowbody">
+	<div class="container">
+		<p class="categoryshowtext">
+  		<strong>Category:</strong>
+ 			 	<%= @category.name %>
+		</p>
+		<p class="categoryshowproduct">
+  		<% @category.product.each do |product| %>
         <td><%= image_tag product.image_url%></td>
-
-    <% end %>
-
-</p>
-
-
-
-<%= link_to 'Back', root_path %>
+    	<% end %>
+		</p>
+	</div>
+</body>

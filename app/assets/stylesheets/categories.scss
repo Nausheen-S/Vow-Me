@@ -1,3 +1,18 @@
 // Place all the styles related to the Categories controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.categoryshowbody{
+	background-color: #F9F8EA;
+}
+.categoryshowtext{
+	font-family: 'Bellota', cursive;
+	color: #CCD238;
+	font-size: 30px;
+	text-align: center;
+}
+.categoryshowproduct{
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	justify-content: space-between;
+}

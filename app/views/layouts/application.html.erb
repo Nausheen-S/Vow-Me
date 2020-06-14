@@ -17,37 +17,21 @@
   	<nav class="navbar  navbar-expand-lg navbar-dark" style="background-color:#CCD238;">
   		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
   			<span class="navbar-toggler-icon"></span>
-  </button>
+  		</button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-  <ul class="navbar-nav mr-auto">
-  <li class="nav-item ">
-  	<a class="nav-link" href="/cart_items"><span class="navheading">View Cart</span> <span class="sr-only">(current)</span></a>
-  </li>
-  <li class="nav-item ">
-  	<a class="nav-link" href="/categories/1"><span class="navheading">Dresses</span> <span class="sr-only">(current)</span></a>
-  </li>
-  <li class="nav-item ">
-  	<a class="nav-link" href="/categories/2"><span class="navheading"><span class="navheading">Accessories </span></span><span class="sr-only">(current)</span></a>
-  </li>
-  <li class="nav-item ">
-  	<a class="nav-link" href="/categories/3"><span class="navheading">Shoes </span><span class="sr-only">(current)</span></a>
-  </li>
-  <li class="nav-item ">
-  	<a class="nav-link" href="/"><span class="navheading">Back </span><span class="sr-only">(current)</span></a>
-  </li>
-
-  <%= form_tag(root_path, :method => "get",
-    class: 'form-inline my-2 my-lg-0') do %>
-
-  <div class="input-group">
-    <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control mr-sm-2" %>
-
-    <div class="input-group-btn">
-      <%= button_tag "search", :class => 'productsearchbutton',:name => nil%>
-    </div>
-  </div>
-<% end %>
-
+  	<ul class="navbar-nav mr-auto">
+  		<li class="nav-item ">
+  			<a class="nav-link" href="/categories/1"><span class="navheading">Dresses</span> <span class="sr-only">(current)</span></a>
+  		</li>
+  		<li class="nav-item ">
+  			<a class="nav-link" href="/categories/2"><span class="navheading"><span class="navheading">Accessories </span></span><span class="sr-only">(current)</span></a>
+  		</li>
+  		<li class="nav-item ">
+  			<a class="nav-link" href="/categories/3"><span class="navheading">Shoes </span><span class="sr-only">(current)</span></a>
+  		</li>
+  	<!--	<li class="nav-item ">
+  			<a class="nav-link" href="/"><span class="navheading"><span class="navheading">Home </span></span><span class="sr-only">(current)</span></a>
+  		</li>-->
 <li class="nav-item ">
 	<% if  customer_signed_in? %>
   	<%= link_to 'log out', destroy_customer_session_url, method: :delete , :class => "nav-link" %>
@@ -58,8 +42,42 @@
 
   </li>
 
-    </li>
-  </ul>
+  </li>
+
+
+  		<%= form_tag(root_path, :method => "get",
+    class: 'form-inline my-2 my-lg-0') do %>
+
+  		<div class="input-group">
+    			<%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control mr-sm-2" %>
+
+    		<div class="input-group-btn">
+      		<%= button_tag "search", :class => 'productsearchbutton',:name => nil%>
+    		</div>
+  		</div>
+		<% end %>
+
+
+</ul>
+
+
+
+  <!--	<a class="nav-link" href="/cart_items"><span class="navheading">View Cart</span> <span class="sr-only">(current)</span></a>
+  </li>-->
+
+
+<a class="nav-link" href="/cart_items">
+  <svg class="bi bi-cart4" width="2em" height="2em" viewBox="0 0 16 16" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
+</svg>
+</a>
+<a class="nav-link" href="/">
+  <svg class="bi bi-house-door-fill" width="2em" height="2em" viewBox="0 0 16 16" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
+  <path d="M6.5 10.995V14.5a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .146-.354l6-6a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 .146.354v7a.5.5 0 0 1-.5.5h-4a.5.5 0 0 1-.5-.5V11c0-.25-.25-.5-.5-.5H7c-.25 0-.5.25-.5.495z"/>
+  <path fill-rule="evenodd" d="M13 2.5V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+</svg>
+</a>
+
 
   </nav>
     <%= yield %>

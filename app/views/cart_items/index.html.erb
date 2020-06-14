@@ -1,14 +1,19 @@
 <p id="notice"><%= notice %></p>
+<body class = "cartitemsbody">
+<h1 class="cartitemheading">Cart Items</h1>
 
-<h1>Cart Items</h1>
-
-<table>
-  <thead>
+<table class="table">
+  <thead class="thead-dark">
     <tr>
-      <th>Customer</th>
-      <th>Quantity</th>
-      <th>Product</th>
-      <th colspan="3"></th>
+
+      <th scope="col">Customer</th>
+      <th scope="col">Quantity</th>
+
+      <th scope="col">Product</th>
+
+      <th scope="col">Price</th>
+      <th scope="col">Delete</th>
+
     </tr>
   </thead>
 
@@ -22,7 +27,14 @@
 
         <td><%= image_tag(cart_item.product.image_url) %></td>
         <td><%= cart_item.product.price%></td>
-        <td><%= link_to 'Remove Item', cart_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+<td>
+	<svg class="bi bi-trash-fill" width="2em" height="2em" viewBox="0 0 16 16" fill="#CCD238" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/></svg>
+
+  <%= link_to 'Remove Item', cart_item, :class => "deletelink",method: :delete, data: { confirm: 'Are you sure?' } %>
+</td>
+
       </tr>
     <% end %>
   </tbody>
@@ -37,7 +49,6 @@
 	<strong>Total Price:</strong>
 	<%= total_price %>
 </p>
-<p>
-<%= link_to 'Back', root_path %>
-</p>
+
 <br>
+</body>

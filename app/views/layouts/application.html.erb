@@ -9,6 +9,8 @@
     <%= javascript_include_tag 'application' %>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=MuseoModerno:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bellota:ital@1&display=swap" rel="stylesheet">
   </head>
 
   <body>
@@ -19,29 +21,42 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
   <ul class="navbar-nav mr-auto">
   <li class="nav-item ">
-  	<a class="nav-link" href="/cart_items">View Cart <span class="sr-only">(current)</span></a>
+  	<a class="nav-link" href="/cart_items"><span class="navheading">View Cart</span> <span class="sr-only">(current)</span></a>
   </li>
   <li class="nav-item ">
-  	<a class="nav-link" href="/categories/1">Dresses <span class="sr-only">(current)</span></a>
+  	<a class="nav-link" href="/categories/1"><span class="navheading">Dresses</span> <span class="sr-only">(current)</span></a>
   </li>
   <li class="nav-item ">
-  	<a class="nav-link" href="/categories/2">Accessories <span class="sr-only">(current)</span></a>
+  	<a class="nav-link" href="/categories/2"><span class="navheading"><span class="navheading">Accessories </span></span><span class="sr-only">(current)</span></a>
   </li>
   <li class="nav-item ">
-  	<a class="nav-link" href="/categories/3">Shoes <span class="sr-only">(current)</span></a>
+  	<a class="nav-link" href="/categories/3"><span class="navheading">Shoes </span><span class="sr-only">(current)</span></a>
   </li>
   <li class="nav-item ">
-  	<a class="nav-link" href="/">Back <span class="sr-only">(current)</span></a>
+  	<a class="nav-link" href="/"><span class="navheading">Back </span><span class="sr-only">(current)</span></a>
   </li>
+
   <%= form_tag(root_path, :method => "get",
     class: 'form-inline my-2 my-lg-0') do %>
+
   <div class="input-group">
     <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control mr-sm-2" %>
+
     <div class="input-group-btn">
       <%= button_tag "search", :class => 'productsearchbutton',:name => nil%>
     </div>
   </div>
 <% end %>
+
+<li class="nav-item ">
+	<% if  customer_signed_in? %>
+  	<%= link_to 'log out', destroy_customer_session_url, method: :delete , :class => "nav-link" %>
+
+  <% else %>
+  	<li><a class="nav-link" href="/customers/sign_up"><span class="glyphicon glyphicon-user"></span> <span class="navheading">Sign Up/Log In</span></a></li>
+  <% end %>
+
+  </li>
 
     </li>
   </ul>

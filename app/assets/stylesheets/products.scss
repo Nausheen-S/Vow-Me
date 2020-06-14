@@ -16,4 +16,49 @@
 	color: white;
 	padding: 7px;
 	border-radius: 5px;
+	font-size: 20px;
+}
+.productpics{
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	justify-content: space-between;
+}
+//show
+.productshowbody{
+	background-color: #F9F8EA;
+}
+.productshowtext{
+	display: flex;
+	justify-content:  center;
+}
+.card-header{
+	text-align: center;
+	font-family: 'Bellota', cursive;
+	color: #CCD238;
+	font-weight: bolder;
+	font-size: 20px;
+}
+.cartsubmit{
+	display: flex;
+	justify-content: center;
+
+}
+.button{
+	background-color:yellow;
+}
+.card-text{
+	font-family: 'Bellota', cursive;
+	color: #CCD238;
+	font-size: 20px;
+}
+.field{
+	font-family: 'Bellota', cursive;
+	color: #CCD238;
+	font-size: 20px;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

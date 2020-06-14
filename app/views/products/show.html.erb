@@ -1,5 +1,44 @@
 <p id="notice"><%= notice %></p>
+<body class = "productshowbody">
+<div class = "container productshowtext">
 
+<div class="card" style="width: 18rem;">
+	<div class="card-header">
+   <%= @product.name %>
+  </div>
+  <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+	<img src="<%= image_url @product.image_url %>" class="card-img-top" alt="...">
+<div class="card-body">
+
+	 <p class="card-text"><strong>Description:</strong><%= @product.description %></p>
+	 <p class="card-text"> <strong>Price:</strong>
+  <%= @product.price %></p>
+<%= form_with scope: :cart_item, url: cart_items_path, local: true do |form| %>
+
+
+
+
+  <div class="field">
+    <%= form.label :quantity %>
+    <%= form.number_field :quantity %>
+  </div>
+
+  <div class="field" >
+
+    <%= form.hidden_field :product_id, value:@product.id %>
+  </div>
+
+  <div class="actions cartsubmit">
+
+ <%= form.submit %>
+
+  </div>
+<% end %>
+</div>
+</div>
+</body>
+
+<!--
 <p>
   <strong>Name:</strong>
   <%= @product.name %>
@@ -23,30 +62,7 @@
   <%= @product.category.name %>
 </p>
 <p>
-<%= link_to image_tag(@product.image_url)%>
+<%= image_tag(@product.image_url)%>
 </p>
 
-<!--<%= link_to 'Edit', edit_product_path(@product) %> |-->
-
-<%= form_with scope: :cart_item, url: cart_items_path, local: true do |form| %>
-
-
-
-
-  <div class="field">
-    <%= form.label :quantity %>
-    <%= form.number_field :quantity %>
-  </div>
-
-  <div class="field" >
-
-    <%= form.hidden_field :product_id, value:@product.id %>
-  </div>
-
-  <div class="actions">
-
-    <%= form.submit %>
-  </div>
-<% end %>
-
-<%= link_to 'Back', root_path %>
+<%= link_to 'Edit', edit_product_path(@product) %> |-->

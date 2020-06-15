@@ -32,6 +32,10 @@ class CartItemsController < ApplicationController
 
   # GET /cart_items/1/edit
   def edit
+    @cart_item = CartItem.find(params[:id])
+
+    @product=Product.find(@cart_item.product_id)
+
   end
 
 

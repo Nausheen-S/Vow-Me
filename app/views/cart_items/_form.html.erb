@@ -12,18 +12,21 @@
   <% end %>
 
 
+<div class="field">
 
+   <%= image_tag(@cart_item.product.image_url )%>
+  </div>
   <div class="field">
     <%= form.label :quantity %>
     <%= form.number_field :quantity %>
   </div>
 
   <div class="field">
-    <%= form.label :product_id %>
-    <%= form.text_field :product_id %>
+
+    <%= form.hidden_field :product_id %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="actions ">
+   <span class="buttontag"> <%= form.submit %></span>
   </div>
 <% end %>

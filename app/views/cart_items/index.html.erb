@@ -36,7 +36,14 @@
 </div>
 <% end %>
 
-
+<% total_price = 0 %>
+<% @cart_items.each do |cart_item| %>
+	<% total_price += cart_item.product.price * cart_item.quantity %>
+<% end %>
+<div class="pricetext">
+	<strong>Total Price:</strong>
+	<%= total_price %>
+</div>
 <br>
 </div>
 </body>

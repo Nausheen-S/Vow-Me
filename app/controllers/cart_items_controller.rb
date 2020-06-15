@@ -1,4 +1,5 @@
 class CartItemsController < ApplicationController
+  before_action :authenticate_customer!, :except => [ :index ]
   before_action :set_cart_item, only: [:show, :edit, :update, :destroy]
 
   # GET /cart_items
@@ -59,10 +60,12 @@ class CartItemsController < ApplicationController
 
     end
     respond_to do |format|
+     @customer = Customer.find(current_customer.id)
 
+    @cart_items = @customer.cart_items
       if @cart_item.save
         format.html { redirect_to @cart_item, notice: 'Cart item was successfully created.' }
-        format.json { render :root, status: :created, location: @cart_item }
+        format.json { render :show, status: :created, location: @cart_item }
       else
         format.html { render :new }
         format.json { render json: @cart_item.errors, status: :unprocessable_entity }

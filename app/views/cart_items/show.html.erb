@@ -1,23 +1,25 @@
+<body class="cartitemshowbody">
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Customer:</strong>
-  <%= @cart_item.customer %>
-</p>
-
-<p>
+<div class="cartitemshowtext">
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Wedding Dress</h5>
+<p class="card-text">
   <strong>Quantity:</strong>
   <%= @cart_item.quantity %>
 </p>
+</div>
+<img src="<%= image_url @cart_item.product.image_url %>" class="card-img-top" alt="...">
+</div>
+<!--<p>
 
-<p>
-  <strong>Product:</strong>
-  <%= @cart_item.product %>
-</p>
-<p>
-	<strong>Total Price:</strong>
-	<%= @total_price %>
-</p>
+  <%= image_tag(@cart_item.product.image_url) %>
 
-<%= link_to 'Edit', edit_cart_item_path(@cart_item) %> |
-<%= link_to 'Back', cart_items_path %>
+  </p>-->
+
+
+</div>
+
+
+</body>

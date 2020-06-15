@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+  before_action :authenticate_customer!, :except => [ :show ]
   before_action :set_category, only: [:show, :edit, :update, :destroy]
 
   # GET /categories

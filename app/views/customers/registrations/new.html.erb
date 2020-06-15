@@ -1,5 +1,6 @@
-<h2>Register</h2>
-
+<body class="registerbody">
+<h2 class ="registerheading">Register</h2>
+<div class="registerform">
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
@@ -32,8 +33,14 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+  	<div class="butn">
+  	  <input type="submit" value="Register" class="buttn "></div>
+    <!--<%= f.submit "Sign up" %>-->
   </div>
 <% end %>
-
+</div>
+<span class="logintag">
 <%= render "devise/shared/links" %>
+</span>
+
+</body>
